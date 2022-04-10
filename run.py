@@ -12,8 +12,15 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('dogs_in_the_hood')
 
-walkers = SHEET.worksheet('dog_walkers')
+def register_walker():
+    """
+    Make an account for a new dog walker
+    """
+    print("Please create a dog walker account to continue \n")
+    user_first_name = input("Please enter your first name: ")
+    user_last_name = input("Please enter your last name: ")
+    user_email_address = input("Please enter your email address: ")
+    user_password = input("Please create a password: ")
+    print("\n You have now registered as a dog walker, {} {}".format(user_first_name, user_last_name))
 
-data = walkers.get_all_values()
-
-print(data)
+register_walker()
