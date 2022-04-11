@@ -129,7 +129,7 @@ class Dog_Owner:
 
 
 
-# User functions
+# Functions for all users
 
 def homepage():
     """
@@ -211,30 +211,6 @@ def collect_email():
 
     return email
 
-def is_walker(email):
-    """
-    Check if email is from a customer account
-    """
-    walker_worksheet = select_worksheet('dog_walkers')
-    email_column = customer_worksheet.col_values(3)
-
-    if email in email_column:
-        return True
-    else:
-        return False
-
-def is_owner(email):
-    """
-    Check if email is from a admin account
-    """
-    owner_worksheet = select_worksheet('dog_owners')
-    email_column = admin_worksheet.col_values(3)
-
-    if email in email_column:
-        return True
-    else:
-        return False
-
 def email_not_found():
     """
     Used when the system can't find the email.
@@ -277,10 +253,60 @@ def create_account():
 
     else:
         print("Sorry, your answer wasn't recognised")
-        create_account()    
+        create_account()
 
+def collect_name():
+    """
+    Collect the user's first and last name
+    """
+    while True:
+        name = input("Enter your answer here:\n").capitalize().strip()
 
+        end_section()
 
+        if validate_name(name):
+            break
+
+    return name
+
+def collect_password():
+    """
+    Collect the user's password
+    """
+    while True:
+        password = input("Enter your answer here: /n")
+
+        end_section()
+
+    return password  
+
+# Functions for walkers
+
+def is_walker(email):
+    """
+    Check if email is from a customer account
+    """
+    walker_worksheet = select_worksheet('dog_walkers')
+    email_column = customer_worksheet.col_values(3)
+
+    if email in email_column:
+        return True
+    else:
+        return False
+
+#Functions for owners
+
+def is_owner(email):
+    """
+    Check if email is from a admin account
+    """
+    owner_worksheet = select_worksheet('dog_owners')
+    email_column = admin_worksheet.col_values(3)
+
+    if email in email_column:
+        return True
+    else:
+        return False
 
 def register_owner():
     """
@@ -343,30 +369,6 @@ def create_owner(data):
     """
     return Dog_Owner(data[0], data[1], data[2])
 
-def collect_name():
-    """
-    Collect the user's first and last name
-    """
-    while True:
-        name = input("Enter your answer here:\n").capitalize().strip()
-
-        end_section()
-
-        if validate_name(name):
-            break
-
-    return name
-
-def collect_password():
-    """
-    Collect the user's password
-    """
-    while True:
-        password = input("Enter your answer here: /n")
-
-        end_section()
-
-    return password
 
 def select_worksheet(option):
     """
@@ -385,6 +387,7 @@ def select_worksheet(option):
 
     return worksheet
 
+# Worksheet functions
 
 def update_worksheet(data, worksheet):
     """
