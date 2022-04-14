@@ -77,19 +77,24 @@ class User:
         1. Go to the Dogs in the hood spreadsheet and pull out the user's values from Mon to Sun
         2. Print out this information nicely
         """
+        worksheet = SHEET.worksheet('dogs_in_the_hood')
+        user_email = self.email
+        row = find_row(user_email, worksheet)
+        user_info = worksheet.row_values(row)
+
         availability = {
-            'Monday': WORKSHEET.col_values(5),
-            'Tuesday': WORKSHEET.col_values(6),
-            'Wednesday': WORKSHEET.col_values(7),
-            'Thursday': WORKSHEET.col_values(8),
-            'Friday': WORKSHEET.col_values(9),
-            'Saturday': WORKSHEET.col_values(10),
-            'Sunday': WORKSHEET.col_values(11),
+            'Monday': user_info[4],
+            'Tuesday': user_info[5],
+            'Wednesday': user_info[6],
+            'Thursday': user_info[7],
+            'Friday': user_info[8],
+            'Saturday': user_info[9],
+            'Sunday': user_info[10],
         }
 
         return availability
 
-# User functions
+# Welcome function
 
 def homepage():
     """
@@ -100,6 +105,8 @@ def homepage():
     """
     print("Dogs in the Hood")
     print("Where dog owners meet dog walkers")
+
+# log in and sign up functions
 
 def login_or_register():
     """
@@ -136,7 +143,9 @@ def log_in():
 
         # If it is a registered email
         if registered_user:
-
+            info = user_info(user_email)
+            user = create_user(info)
+            user_function(user)
             break
 
         else:
@@ -226,8 +235,6 @@ def collect_password():
 
     return password  
 
-# Functions for users
-
 def is_user(email):
     """
     Check if email is from a customer account
@@ -281,11 +288,65 @@ def new_user_info():
 
     return [first_name, last_name, email, password]
 
+def user_info(email):
+    """
+    Collect the user info from the dogs_in_the_hood worksheet
+    Return a list with the user info
+    """
+    user_worksheet = SHEET.worksheet('dogs_in_the_hood')
+    user_email = email
+    row = find_row(user_email, user_worksheet)
+    user_info = user_worksheet.row_values(row)
+
+    return [user_info[0], user_info[1], user_info[2], user_info[3]]
+
 def create_user(data):
     """
     Create the customer
     """
     return User(data[0], data[1], data[2], data[3])
+
+# Main application functions
+
+def user_function(user):
+    """
+    Code used for registered users
+    """
+    print(f'Welcome {user.user_full_name()}!')
+    email = user.email
+    return_calendar(user)
+    user_menu_selection = user_menu()
+
+def user_menu():
+    """
+    Display the user's menu options:
+    1 - Request a walker for your dog
+    2 - Register availability to walk another user's dog
+    """
+    print("Would you like to")
+    print("1 - Find a walker for your dog")
+    print("2 - Register availability to walk other user's dogs")
+    menu_option = input("Enter your answer here:\n").upper().strip()
+
+    end_section()
+    
+    # Validate if the answer is 1 or 2
+    while menu_option not in ("1", "2"):
+        print("Please choose one of the options:")
+        print("1 - Find a walker for your dog")
+        print("2 - Register availability to walk other user's dogs")
+        menu_option = input("Enter your answer here:\n").upper().strip()
+
+        end_section()
+
+    return
+
+def return_calendar(user):
+    print("Here is your calendar this week:")
+    end_section()
+    print(User.get_availability(user))
+    end_section()
+
 
 
 # Worksheet functions
