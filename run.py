@@ -216,9 +216,13 @@ def collect_password():
     """
     Collect the user's password
     """
-    
-    password = input("Enter your answer here: \n")
+    while True:
+        password = input("Enter your answer here: \n")
 
+        end_section()
+
+        if validate_password(password):
+            break
 
     return password  
 
@@ -314,7 +318,7 @@ def validate_name(name):
     """
     try:
         if len(name) < 1:
-            raise ValueError("Your name needs to be at least one char long.")
+            raise ValueError("Your name needs to be at least one character long.")
 
     except ValueError as e:
         print(f"Incorrect input: {e} Please try again.")
@@ -336,6 +340,21 @@ def user_validate_email(email):
         print(str(e))
         print("Example: code@codersbistro.com")
         print('Lets try again')
+
+def validate_password(password):
+    """
+    Validate the user's password
+    Check if the password is at least 8 characters long
+    """
+    try:
+        if len(password) < 8:
+            raise ValueError("Your password needs to be at least eight characters long.")
+    
+    except ValueError as e:
+        print(f"Incorrect input: {e} Please try again.")
+        return False
+
+    return True
 
 
 # Formatting
