@@ -286,6 +286,11 @@ def new_user_info():
     print("Please choose a secure password for your account")
     password = collect_password()
 
+    availability = new_user_availability()
+
+    for day in availability:
+        
+
     return [first_name, last_name, email, password]
 
 def user_info(email):
@@ -347,6 +352,48 @@ def return_calendar(user):
     print(User.get_availability(user))
     end_section()
 
+def new_user_availability():
+
+    user_availability = []
+
+    print("Are you available to walk dogs on Monday this week?")
+    print("1 - Yes")
+    print("2 - No")
+    monday = input("Enter your answer here: \n").upper.strip()
+
+    print("Are you available to walk dogs on Tuesday this week?")
+    print("1 - Yes")
+    print("2 - No")
+    tuesday = input("Enter your answer here: \n").upper.strip()
+    
+    print("Are you available to walk dogs on Wednesday this week?")
+    print("1 - Yes")
+    print("2 - No")
+    wednesday = input("Enter your answer here: \n").upper.strip()
+
+    print("Are you available to walk dogs on Thursday this week?")
+    print("1 - Yes")
+    print("2 - No")
+    thursday = input("Enter your answer here: \n").upper.strip()
+
+    print("Are you available to walk dogs on Friday this week?")
+    print("1 - Yes")
+    print("2 - No")
+    friday = input("Enter your answer here: \n").upper.strip()
+
+    print("Are you available to walk dogs on Saturday this week?")
+    print("1 - Yes")
+    print("2 - No")
+    saturday = input("Enter your answer here: \n").upper.strip()
+
+    print("Are you available to walk dogs on sunday this week?")
+    print("1 - Yes")
+    print("2 - No")
+    sunday = input("Enter your answer here: \n").upper.strip()
+
+    user_availability.append(monday, tuesday, wednesday, thursday, friday, saturday, sunday)   
+
+    return user_availability
 
 
 # Worksheet functions
