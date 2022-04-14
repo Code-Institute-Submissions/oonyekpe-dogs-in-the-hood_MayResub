@@ -1,6 +1,8 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from email_validator import validate_email, EmailNotValidError
+from datetime import date, datetime
+from time import sleep
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -12,45 +14,43 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('dogs_in_the_hood')
+WORKSHEET = SHEET.worksheet("dogs_in_the_hood")
 
-class Dog_Walker:
+class User:
 
     """
-    A class used to represent a dog walker
+    A class used to represent a dogs in the hood user
 
     ...
 
     Attributes
     --------------------------------------
     first_name - str
-        The walker's first name
+        The user's first name
     
     last_name - str
-        The walker's last name
+        The user's last name
 
     email - str
-        The walker's email address
+        The user's email address
 
     password - str
-        The walker's account password
+        The user's account password
 
-    availability_cal - list
-        An array of the walker's availability, Monday to Sunday, mornings and afternoons for 3 weeks
-
-    Methods
+        Methods
     --------------------------------------
 
-    walker_full_name
-        Returns the full name of the walker
+    user_full_name
+        Returns the full name of the user
 
-    walker_availability_w1
-        Returns the walkers availability this week
+    get_availability
+        Returns the user's availability
 
-    walker_availability_w2
-        Returns the walkers availability next week
+    set_availability(day)
+       Setting the user's availability to walk dogs on certain day of the week
 
-    walker_availability_w3
-        Returns the walkers availability in two week's time
+    request_walkers(day)
+       Return a list of up to five walkers on a given day of the week, excluding the current user
     """
 
     def __init__(self, first_name, last_name, email, password):
@@ -62,74 +62,34 @@ class Dog_Walker:
         self.last_name = last_name
         self.email = email
         self.password = password
-        self.availability_cal = []
+        
 
-    def walker_full_name(self):
+    def user_full_name(self):
         """
-        Return the walker's full name
-        """
-        return f'{self.first_name} {self.last_name}'
-
-class Dog_Owner:
-
-    """
-    A class used to represent a dog owner
-
-    ...
-
-    Attributes
-    --------------------------------------
-    first_name - str
-        The owner's first name
-    
-    last_name - str
-        The owner's last name
-
-    email - str
-        The owner's email address
-
-    password - str
-        The owner's account password
-
-    booking_cal - list
-        An array of the owner's bookings, Monday to Sunday, mornings and afternoons for 3 weeks
-
-    Methods
-    --------------------------------------
-
-    owner_full_name
-        Returns the full name of the owner
-
-    owner_bookings_w1
-        Returns the owner's bookings this week
-
-    owner_bookings_w2
-        Returns the owner's bookings next week
-
-    owner_bookings_w3
-        Returns the owner's bookings in two week's time
-    """
-
-    def __init__(self, first_name, last_name, email, password):
-        """
-        Instance attributes
-        """
-
-        self.first_name = first_name
-        self.last_name = last_name
-        self.email = email
-        self.password = password
-        self.booking_cal = []
-
-    def owner_full_name(self):
-        """
-        Return the owner's full name
+        Returns the user's full name
         """
         return f'{self.first_name} {self.last_name}'
 
 
+    def get_availability(self):
+        """
+        Returns the user's availability
+        1. Go to the Dogs in the hood spreadsheet and pull out the user's values from Mon to Sun
+        2. Print out this information nicely
+        """
+        availability = {
+            'Monday': WORKSHEET.col_values(5),
+            'Tuesday': WORKSHEET.col_values(6),
+            'Wednesday': WORKSHEET.col_values(7),
+            'Thursday': WORKSHEET.col_values(8),
+            'Friday': WORKSHEET.col_values(9),
+            'Saturday': WORKSHEET.col_values(10),
+            'Sunday': WORKSHEET.col_values(11),
+        }
 
-# Functions for all users
+        return availability
+
+# User functions
 
 def homepage():
     """
@@ -140,7 +100,6 @@ def homepage():
     """
     print("Dogs in the Hood")
     print("Where dog owners meet dog walkers")
-    print("To get started, register as either a dog owner or dog walker. You will then be able to book a walker, or register your availability.")
 
 def login_or_register():
     """
@@ -165,7 +124,7 @@ def login_or_register():
 
 def log_in():
     """
-    Code used to do a log in
+    Code used to allow the user to log in
     """
     print("Good to have you back!")
     print("I just need to check your email.")
@@ -173,18 +132,13 @@ def log_in():
 
     while True:
         user_email = collect_email()
-        walker = is_walker(user_email)
-        owner = is_owner(user_email)
-        # If it is a walker's email
-        if walker:
-            walker_function(user_email)
+        registered_user = is_user(user_email)
+
+        # If it is a registered email
+        if registered_user:
+
             break
-        # If it is an owner's email
-        elif owner:
-            info = owner_info(user_email)
-            owner = create_owner(info)
-            owner_function(owner)
-            break
+
         else:
             print("Sorry, I couldn't find your email")
             answer = email_not_found()
@@ -197,19 +151,6 @@ def log_in():
                 create_account()
                 break
 
-def collect_email():
-    """
-    Collect the user email
-    """
-    while True:
-        email = input("Enter your answer here:\n").strip()
-
-        end_section()
-
-        if user_validate_email(email):
-            break
-
-    return email
 
 def email_not_found():
     """
@@ -238,22 +179,10 @@ def create_account():
     """
     Code used to create an account
     """
-    print("Are you a")
-    print("1 - Dog owner")
-    print("2 - Dog walker")
-    account_type = input("Enter your answer here:/n").strip()
+    print("Let's make your account!")
 
-    if account_type == "1":
-        owner = register_owner()
-        owner_function(owner)
-
-    elif account_type == "2":
-        walker = register_walker()
-        walker_function(walker)
-
-    else:
-        print("Sorry, your answer wasn't recognised")
-        create_account()
+    new_user = register_user()
+    user_function(new_user)
 
 def collect_name():
     """
@@ -269,77 +198,63 @@ def collect_name():
 
     return name
 
+def collect_email():
+    """
+    Collect the user email
+    """
+    while True:
+        email = input("Enter your answer here:\n").strip()
+
+        end_section()
+
+        if user_validate_email(email):
+            break
+
+    return email
+
 def collect_password():
     """
     Collect the user's password
     """
-    while True:
-        password = input("Enter your answer here: /n")
+    
+    password = input("Enter your answer here: \n")
 
-        end_section()
 
     return password  
 
-# Functions for walkers
+# Functions for users
 
-def is_walker(email):
+def is_user(email):
     """
     Check if email is from a customer account
     """
-    walker_worksheet = select_worksheet('dog_walkers')
-    email_column = customer_worksheet.col_values(3)
+    user_worksheet = SHEET.worksheet('dogs_in_the_hood')
+    email_column = user_worksheet.col_values(3)
 
     if email in email_column:
         return True
     else:
         return False
 
-#Functions for owners
-
-def is_owner(email):
+def register_user():
     """
-    Check if email is from a admin account
+    Register the user.
+    Return the user's info
     """
-    owner_worksheet = select_worksheet('dog_owners')
-    email_column = admin_worksheet.col_values(3)
-
-    if email in email_column:
-        return True
-    else:
-        return False
-
-def register_owner():
-    """
-    Register the user as a new owner.
-    Return an Owner.
-    """
-    print("Let's make a customer account for you!")
     print("I need some basic info.\n")
-    owner_info = new_owner_info()
-    update_worksheet(owner_info, "dog_owners")
+    user_info = new_user_info()
+    update_worksheet(user_info)
 
-    return create_owner(owner_info)
+    return create_user(user_info)
 
-def owner_info(email):
+def new_user_info():
     """
-    Collect the owner info from the dogs in the hood worksheet
-    Return a list with the owner info
-    """
-    owner_worksheet = select_worksheet('dog_owners')
-    user_email = email
-    row = find_row(user_email, customer_worksheet)
-    owner_info = owner_worksheet.row_values(row)
-
-    return [owner_info[0], owner_info[1], owner_info[2]]
-
-def new_owner_info():
-    """
-    Collect the owner info (first name, last name, email and password),
+    Collect the user's info (first name, last name, email and password),
     And check if its not already registered.
-    Return a list with the new owner info
+    Return a list with the new user's info
     """
-    owner_worksheet = select_worksheet('dog_owners')
-    email_column = owner_worksheet.col_values(3)
+    worksheet = SHEET.worksheet('dogs_in_the_hood')
+    email_column = worksheet.col_values(3)
 
     print("What's your first name?")
     first_name = collect_name()
@@ -362,41 +277,23 @@ def new_owner_info():
 
     return [first_name, last_name, email, password]
 
-
-def create_owner(data):
+def create_user(data):
     """
     Create the customer
     """
-    return Dog_Owner(data[0], data[1], data[2])
+    return User(data[0], data[1], data[2], data[3])
 
-
-def select_worksheet(option):
-    """
-    Based on the option, return the right worksheet
-    """
-    worksheet_dict = {
-        "1": 'dog_owner',
-        "2": 'dog_walker',
-    }
-
-    worksheet = ""
-
-    for key, value in worksheet_dict.items():
-        if option == key:
-            worksheet = SHEET.worksheet(value)
-
-    return worksheet
 
 # Worksheet functions
 
-def update_worksheet(data, worksheet):
+def update_worksheet(data):
     """
     Receives a list to be inserted into a worksheet
-    Update the relevant worksheet with the data provided
+    Update the registered users worksheet with the data provided
     """
     # Same function as used on the love_sandwiches walk through project
     # by Code Institute
-    worksheet_to_update = select_worksheet(worksheet)
+    worksheet_to_update = SHEET.worksheet('dogs_in_the_hood')
     worksheet_to_update.append_row(data)
 
 
