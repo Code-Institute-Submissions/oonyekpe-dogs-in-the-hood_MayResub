@@ -8,13 +8,14 @@ SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
-    ]
+]
 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('dogs_in_the_hood')
 WORKSHEET = SHEET.worksheet("dogs_in_the_hood")
+
 
 class User:
 
@@ -27,7 +28,7 @@ class User:
     --------------------------------------
     first_name - str
         The user's first name
-    
+
     last_name - str
         The user's last name
 
@@ -50,7 +51,8 @@ class User:
        Setting the user's availability to walk dogs on certain day of the week
 
     request_walkers(day)
-       Return a list of up to five walkers on a given day of the week, excluding the current user
+       Return a list of up to five walkers on a given day of the week,
+       excluding the current user
     """
 
     def __init__(self, first_name, last_name, email, password):
@@ -62,7 +64,6 @@ class User:
         self.last_name = last_name
         self.email = email
         self.password = password
-        
 
     def user_full_name(self):
         """
@@ -70,11 +71,11 @@ class User:
         """
         return f'{self.first_name} {self.last_name}'
 
-
     def get_availability(self):
         """
         Returns the user's availability
-        1. Go to the Dogs in the hood spreadsheet and pull out the user's values from Mon to Sun
+        1. Go to the Dogs in the hood spreadsheet and pull out the user's
+        values from Mon to Sun
         2. Print out this information nicely
         """
         worksheet = SHEET.worksheet('dogs_in_the_hood')
@@ -96,6 +97,7 @@ class User:
 
 # Welcome function
 
+
 def homepage():
     """
     Welcome and introduction text
@@ -107,6 +109,7 @@ def homepage():
     print("Where dog owners meet dog walkers")
 
 # log in and sign up functions
+
 
 def login_or_register():
     """
@@ -128,6 +131,7 @@ def login_or_register():
         end_section()
 
     return answer
+
 
 def log_in():
     """
@@ -191,9 +195,10 @@ def create_account():
     print("Let's make your account!")
 
     new_user = register_user()
-    new_user_availabilty  = collect_availability()
+    new_user_availabilty = collect_availability()
     update_availability(new_user.email, new_user_availabilty)
     user_function(new_user)
+
 
 def collect_name():
     """
@@ -209,6 +214,7 @@ def collect_name():
 
     return name
 
+
 def collect_email():
     """
     Collect the user email
@@ -223,6 +229,7 @@ def collect_email():
 
     return email
 
+
 def collect_password():
     """
     Collect the user's password
@@ -235,16 +242,17 @@ def collect_password():
         if validate_password(password):
             break
 
-    return password  
+    return password
+
 
 def collect_availability():
 
     user_availability = []
 
-    print("Please 1 for each day you are available and 2 for the day's you are not, separated with by a comma")
+    print("Please 1 for each day you are available and 2 for the day's you are not, separated with by a comma")  # noqa
     print("1 - Available")
     print("2 - Unavailable")
-    print("For example: if you are available on Monday, Friday and Saturday, enter 1,2,2,2,1,1,2")
+    print("For example: if you are available on Monday, Friday and Saturday, enter 1,2,2,2,1,1,2")  # noqa
     user_input = input("Enter your answer here:\n").upper().strip()
     user_availability = user_input.split(",")
 
@@ -263,6 +271,7 @@ def is_user(email):
     else:
         return False
 
+
 def register_user():
     """
     Register the user.
@@ -273,6 +282,7 @@ def register_user():
     update_worksheet(user_info)
 
     return create_user(user_info)
+
 
 def new_user_info():
     """
@@ -298,11 +308,12 @@ def new_user_info():
         else:
             print("Sorry, this email is already in use")
             print("Can we try again?\n")
-    
+
     print("Please choose a secure password for your account")
     password = collect_password()
 
     return [first_name, last_name, email, password]
+
 
 def user_info(email):
     """
@@ -316,6 +327,7 @@ def user_info(email):
 
     return [user_info[0], user_info[1], user_info[2], user_info[3]]
 
+
 def create_user(data):
     """
     Create the customer
@@ -323,6 +335,7 @@ def create_user(data):
     return User(data[0], data[1], data[2], data[3])
 
 # Main application functions
+
 
 def user_function(user):
     """
@@ -353,7 +366,7 @@ def user_menu():
     menu_option = input("Enter your answer here:\n").upper().strip()
 
     end_section()
-    
+
     # Validate if the answer is 1 or 2
     while menu_option not in ("1", "2"):
         print("Please choose one of the options:")
@@ -365,15 +378,18 @@ def user_menu():
 
     return menu_option
 
+
 def return_calendar(user):
     print("Here is your calendar this week:")
     end_section()
     print(User.get_availability(user))
     end_section()
 
+
 def request_walker(day_to_book):
     """
-    Shows users which walkers are available on the day they want so they can choose one to walk their dog
+    Shows users which walkers are available on the day they want so they can
+    choose one to walk their dog
     """
 
     end_section()
@@ -386,7 +402,8 @@ def request_walker(day_to_book):
 
     for walker in available_walkers:
         count += 1
-        print (count, " - ", available_walkers[count-1][0], available_walkers[count-1][1])
+        print(count, " - ",
+              available_walkers[count-1][0], available_walkers[count-1][1])
 
     end_section()
 
@@ -394,11 +411,11 @@ def request_walker(day_to_book):
 
     chosen_walker = input("Enter your answer here:\n").upper().strip()
 
-    #Validate an available walker was chosen
+    # Validate an available walker was chosen
     number_of_options = []
     option_count = 0
     for walker in available_walkers:
-        option_count+=1
+        option_count += 1
         number_of_options.append(str(option_count))
 
     while chosen_walker not in number_of_options:
@@ -407,7 +424,8 @@ def request_walker(day_to_book):
         count = 0
         for walker in available_walkers:
             count += 1
-            print (count, " - ", available_walkers[count-1][0], available_walkers[count-1][1])
+            print(count, " - ",
+                  available_walkers[count-1][0], available_walkers[count-1][1])
 
         end_section()
 
@@ -420,9 +438,6 @@ def request_walker(day_to_book):
     chosen_walker_list = available_walkers[chosen_walker-1]
 
     return chosen_walker_list
-    
-    
-
 
 
 def collect_day():
@@ -441,7 +456,7 @@ def collect_day():
     booking_day = input("Enter your answer here:\n").upper().strip()
 
     # Validate if the answer is 1,2,3,4,5,6,7
-    while booking_day not in ("1", "2","3","4","5","6","7"):
+    while booking_day not in ("1", "2", "3", "4", "5", "6", "7"):
         print("Please choose one of the options:")
         print("1 - Monday")
         print("2 - Tuesday")
@@ -457,29 +472,24 @@ def collect_day():
 
     return booking_day
 
+
 def book_walker(owner_email, walker, day):
     """
     Update the walker and owner's calendars to show booking
     """
     worksheet = SHEET.worksheet('dogs_in_the_hood')
 
-
     owner_info = find_row(owner_email, worksheet)
     walker_info = find_row(walker[0], worksheet)
 
-
-
-    worksheet.update_cell(owner_info, int(day)+4, f"{walker[0]} {walker[1]} booked for walk")
+    worksheet.update_cell(owner_info, int(
+        day)+4, f"{walker[0]} {walker[1]} booked for walk")
     worksheet.update_cell(walker_info, int(day)+4, f"Booked to walk dog")
 
     print("Great, that's all booked for you. Here is your updated calendar:")
-    
 
 
-
-
-
-def  get_walkers(day):
+def get_walkers(day):
     """
     Gets the available walkers for the day the user requests
     """
@@ -506,7 +516,7 @@ def  get_walkers(day):
     count = 0
 
     for entry in col_values:
-        count+=1
+        count += 1
         if entry == "Available":
             walker_info = worksheet.row_values(count)
             available_walkers.append([walker_info[0], walker_info[1]])
@@ -516,7 +526,7 @@ def  get_walkers(day):
     print("Here are the walkers available on", day, ":")
 
     return available_walkers
-            
+
 
 # Worksheet functions
 
@@ -539,6 +549,7 @@ def find_row(item, worksheet):
 
     return cell.row
 
+
 def update_availability(email, availability):
     """
     Update the worksheet with the user's availability
@@ -549,13 +560,14 @@ def update_availability(email, availability):
     for day in availability:
         if day == '1':
             worksheet_to_update.update_cell(user_entry, column, "Available")
-            column +=1
+            column += 1
 
         elif day == '2':
             worksheet_to_update.update_cell(user_entry, column, "Unavailable")
-            column +=1
+            column += 1
 
 # Validation functions
+
 
 def validate_name(name):
     """
@@ -564,13 +576,15 @@ def validate_name(name):
     """
     try:
         if len(name) < 1:
-            raise ValueError("Your name needs to be at least one character long.")
+            raise ValueError(
+                "Your name needs to be at least one character long.")
 
     except ValueError as e:
         print(f"Incorrect input: {e} Please try again.")
         return False
 
     return True
+
 
 def user_validate_email(email):
     """
@@ -587,6 +601,7 @@ def user_validate_email(email):
         print("Example: code@codersbistro.com")
         print('Lets try again')
 
+
 def validate_password(password):
     """
     Validate the user's password
@@ -594,8 +609,9 @@ def validate_password(password):
     """
     try:
         if len(password) < 8:
-            raise ValueError("Your password needs to be at least eight characters long.")
-    
+            raise ValueError(
+                "Your password needs to be at least eight characters long.")
+
     except ValueError as e:
         print(f"Incorrect input: {e} Please try again.")
         return False
@@ -614,6 +630,7 @@ def end_section():
     print(" ")
 
 # Main function
+
 
 def main():
     """
