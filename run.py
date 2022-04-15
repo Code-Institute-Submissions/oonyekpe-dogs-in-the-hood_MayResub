@@ -334,7 +334,9 @@ def user_function(user):
     user_menu_selection = user_menu()
 
     if user_menu_selection == '1':
-        request_walker()
+        day_to_book = collect_day()
+        chosen_walker = request_walker(day_to_book)
+        book_walker(email, chosen_walker, day_to_book)
     elif user_menu_selection == '2':
         update_availability()
 
@@ -369,11 +371,10 @@ def return_calendar(user):
     print(User.get_availability(user))
     end_section()
 
-def request_walker():
+def request_walker(day_to_book):
     """
     Shows users which walkers are available on the day they want so they can choose one to walk their dog
     """
-    day_to_book = collect_day()
 
     end_section()
 
@@ -414,8 +415,11 @@ def request_walker():
 
         chosen_walker = input("Enter your answer here:\n").upper().strip()
 
+    chosen_walker = int(chosen_walker)
 
-    book_walker(chosen_walker)
+    chosen_walker_list = available_walkers[chosen_walker-1]
+
+    return chosen_walker_list
     
     
 
@@ -452,6 +456,28 @@ def collect_day():
         end_section()
 
     return booking_day
+
+def book_walker(owner_email, walker, day):
+    """
+    Update the walker and owner's calendars to show booking
+    """
+    worksheet = SHEET.worksheet('dogs_in_the_hood')
+
+
+    owner_info = find_row(owner_email, worksheet)
+    walker_info = find_row(walker[0], worksheet)
+
+
+
+    worksheet.update_cell(owner_info, int(day)+4, f"{walker[0]} {walker[1]} booked for walk")
+    worksheet.update_cell(walker_info, int(day)+4, f"Booked to walk dog")
+
+    print("Great, that's all booked for you. Here is your updated calendar:")
+    
+
+
+
+
 
 def  get_walkers(day):
     """
