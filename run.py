@@ -374,7 +374,49 @@ def request_walker():
     Shows users which walkers are available on the day they want so they can choose one to walk their dog
     """
     day_to_book = collect_day()
+
+    end_section()
+
     available_walkers = get_walkers(day_to_book)
+
+    end_section()
+
+    count = 0
+
+    for walker in available_walkers:
+        count += 1
+        print (count, " - ", available_walkers[count-1][0], available_walkers[count-1][1])
+
+    end_section()
+
+    print("Which walker would you like to book?")
+
+    chosen_walker = input("Enter your answer here:\n").upper().strip()
+
+    #Validate an available walker was chosen
+    number_of_options = []
+    option_count = 0
+    for walker in available_walkers:
+        option_count+=1
+        number_of_options.append(str(option_count))
+
+    while chosen_walker not in number_of_options:
+        print(number_of_options)
+        print("Please choose one of the options:")
+        count = 0
+        for walker in available_walkers:
+            count += 1
+            print (count, " - ", available_walkers[count-1][0], available_walkers[count-1][1])
+
+        end_section()
+
+        print("Which walker would you like to book?")
+
+        chosen_walker = input("Enter your answer here:\n").upper().strip()
+
+
+    book_walker(chosen_walker)
+    
     
 
 
@@ -444,6 +486,8 @@ def  get_walkers(day):
             available_walkers.append([walker_info[0], walker_info[1]])
         else:
             continue
+
+    print("Here are the walkers available on", day, ":")
 
     return available_walkers
             
