@@ -192,7 +192,6 @@ def create_account():
 
     new_user = register_user()
     new_user_availabilty  = collect_availability()
-    print(new_user_availabilty)
     update_availability(new_user.email, new_user_availabilty)
     user_function(new_user)
 
@@ -334,12 +333,17 @@ def user_function(user):
     return_calendar(user)
     user_menu_selection = user_menu()
 
+    if user_menu_selection == '1':
+        request_walker()
+    elif user_menu_selection == '2':
+        update_availability()
+
 
 def user_menu():
     """
     Display the user's menu options:
     1 - Request a walker for your dog
-    2 - Register availability to walk another user's dog
+    2 - Update availability to walk another user's dog
     """
     print("Would you like to")
     print("1 - Find a walker for your dog")
@@ -357,13 +361,92 @@ def user_menu():
 
         end_section()
 
-    return
+    return menu_option
 
 def return_calendar(user):
     print("Here is your calendar this week:")
     end_section()
     print(User.get_availability(user))
     end_section()
+
+def request_walker():
+    """
+    Shows users which walkers are available on the day they want so they can choose one to walk their dog
+    """
+    day_to_book = collect_day()
+    available_walkers = get_walkers(day_to_book)
+    
+
+
+
+def collect_day():
+    """
+    Get's the day the user wants to have a walker booked for
+    """
+    print("Which day would you like to book a walk for?")
+    print("1 - Monday")
+    print("2 - Tuesday")
+    print("3 - Wednesday")
+    print("4 - Thursday")
+    print("5 - Friday")
+    print("6 - Saturday")
+    print("7 - Sunday")
+
+    booking_day = input("Enter your answer here:\n").upper().strip()
+
+    # Validate if the answer is 1,2,3,4,5,6,7
+    while booking_day not in ("1", "2","3","4","5","6","7"):
+        print("Please choose one of the options:")
+        print("1 - Monday")
+        print("2 - Tuesday")
+        print("3 - Wednesday")
+        print("4 - Thursday")
+        print("5 - Friday")
+        print("6 - Saturday")
+        print("7 - Sunday")
+
+        booking_day = input("Enter your answer here:\n").upper().strip()
+
+        end_section()
+
+    return booking_day
+
+def  get_walkers(day):
+    """
+    Gets the available walkers for the day the user requests
+    """
+    worksheet = SHEET.worksheet('dogs_in_the_hood')
+    if day == "1":
+        day = "Mon"
+    elif day == "2":
+        day = "Tue"
+    elif day == "3":
+        day = "Wed"
+    elif day == "4":
+        day = "Thu"
+    elif day == "5":
+        day = "Fri"
+    elif day == "6":
+        day = "Sat"
+    elif day == "7":
+        day = "Sun"
+
+    cell = worksheet.find(day)
+    cell_col = cell.col
+    col_values = worksheet.col_values(cell_col)
+    available_walkers = []
+    count = 0
+
+    for entry in col_values:
+        count+=1
+        if entry == "Available":
+            walker_info = worksheet.row_values(count)
+            available_walkers.append([walker_info[0], walker_info[1]])
+        else:
+            continue
+
+    return available_walkers
+            
 
 # Worksheet functions
 
@@ -397,12 +480,10 @@ def update_availability(email, availability):
         if day == '1':
             worksheet_to_update.update_cell(user_entry, column, "Available")
             column +=1
-            print(column)
+
         elif day == '2':
             worksheet_to_update.update_cell(user_entry, column, "Unavailable")
             column +=1
-            print(column)
-            continue
 
 # Validation functions
 
