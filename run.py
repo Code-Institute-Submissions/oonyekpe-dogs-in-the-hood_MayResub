@@ -191,6 +191,9 @@ def create_account():
     print("Let's make your account!")
 
     new_user = register_user()
+    new_user_availabilty  = collect_availability()
+    print(new_user_availabilty)
+    update_availability(new_user.email, new_user_availabilty)
     user_function(new_user)
 
 def collect_name():
@@ -234,6 +237,20 @@ def collect_password():
             break
 
     return password  
+
+def collect_availability():
+
+    user_availability = []
+
+    print("Please 1 for each day you are available and 2 for the day's you are not, separated with by a comma")
+    print("1 - Available")
+    print("2 - Unavailable")
+    print("For example: if you are available on Monday, Friday and Saturday, enter 1,2,2,2,1,1,2")
+    user_input = input("Enter your answer here:\n").upper().strip()
+    user_availability = user_input.split(",")
+
+    return user_availability
+
 
 def is_user(email):
     """
@@ -286,11 +303,6 @@ def new_user_info():
     print("Please choose a secure password for your account")
     password = collect_password()
 
-    availability = new_user_availability()
-
-    for day in availability:
-        
-
     return [first_name, last_name, email, password]
 
 def user_info(email):
@@ -322,6 +334,7 @@ def user_function(user):
     return_calendar(user)
     user_menu_selection = user_menu()
 
+
 def user_menu():
     """
     Display the user's menu options:
@@ -352,50 +365,6 @@ def return_calendar(user):
     print(User.get_availability(user))
     end_section()
 
-def new_user_availability():
-
-    user_availability = []
-
-    print("Are you available to walk dogs on Monday this week?")
-    print("1 - Yes")
-    print("2 - No")
-    monday = input("Enter your answer here: \n").upper.strip()
-
-    print("Are you available to walk dogs on Tuesday this week?")
-    print("1 - Yes")
-    print("2 - No")
-    tuesday = input("Enter your answer here: \n").upper.strip()
-    
-    print("Are you available to walk dogs on Wednesday this week?")
-    print("1 - Yes")
-    print("2 - No")
-    wednesday = input("Enter your answer here: \n").upper.strip()
-
-    print("Are you available to walk dogs on Thursday this week?")
-    print("1 - Yes")
-    print("2 - No")
-    thursday = input("Enter your answer here: \n").upper.strip()
-
-    print("Are you available to walk dogs on Friday this week?")
-    print("1 - Yes")
-    print("2 - No")
-    friday = input("Enter your answer here: \n").upper.strip()
-
-    print("Are you available to walk dogs on Saturday this week?")
-    print("1 - Yes")
-    print("2 - No")
-    saturday = input("Enter your answer here: \n").upper.strip()
-
-    print("Are you available to walk dogs on sunday this week?")
-    print("1 - Yes")
-    print("2 - No")
-    sunday = input("Enter your answer here: \n").upper.strip()
-
-    user_availability.append(monday, tuesday, wednesday, thursday, friday, saturday, sunday)   
-
-    return user_availability
-
-
 # Worksheet functions
 
 def update_worksheet(data):
@@ -416,6 +385,24 @@ def find_row(item, worksheet):
     cell = worksheet.find(item)
 
     return cell.row
+
+def update_availability(email, availability):
+    """
+    Update the worksheet with the user's availability
+    """
+    worksheet_to_update = SHEET.worksheet('dogs_in_the_hood')
+    user_entry = find_row(email, worksheet_to_update)
+    column = 5
+    for day in availability:
+        if day == '1':
+            worksheet_to_update.update_cell(user_entry, column, "Available")
+            column +=1
+            print(column)
+        elif day == '2':
+            worksheet_to_update.update_cell(user_entry, column, "Unavailable")
+            column +=1
+            print(column)
+            continue
 
 # Validation functions
 
