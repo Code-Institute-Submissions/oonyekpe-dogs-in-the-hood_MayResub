@@ -13,7 +13,7 @@ Obiageli Onyekpe
 
 ## How to Use
 
-To start, users are presented with a short introduction and can either log-in as already signed-up users or they can create a new account. For ease, users are requested to type in  1 (then the ENTER key) or 2 ( then the ENTER key) to make their selection.
+To start, users are presented with a short introduction and can either log-in as already signed-up users or create a new account. For ease, users are requested to type in  1 (then the ENTER key) to log-in or 2 ( then the ENTER key) to create an account.
 
 To log-in, users are requested to type in their email address.
 To create an account, users are requested to type in their first and last names, their email address, and a password. The screenshots demonstrating these steps on the app site are shown below:
@@ -29,33 +29,41 @@ To create an account, users are requested to type in their first and last names,
 ![image](https://user-images.githubusercontent.com/68662449/163658442-9211f3d6-cb1a-4e70-94b6-bc7b3859f372.png)
 
 
-Once a new account is successfully created, the user is presented with clear instructions to input their availability for the week, as evidenced in the screenshot below: 
+
+Once a new account is successfully created, the user is presented with clear instructions to input their availability for the week, select 1 for available and 2 for unavailable, as shown in the screenshot below: 
+
 
 ![image](https://user-images.githubusercontent.com/68662449/163662410-db485e94-38ae-4d56-97c8-7bfdcfc40e3e.png)
 
 
 
-Next step, the new user is presented with the option 1 - Select a dog walker or option 2 - Quit the app:
+- After submitting their availability for the week, the new user is presented with two options: 1 - Select a dog walker or 2 - Quit the app:
+
 
 ![image](https://user-images.githubusercontent.com/68662449/163658789-5115418d-ed04-401e-a27d-9ef36b3b08fc.png)
 
-If the user selects option 1, they are then presented with the option to indicate what day of the week (Monday - Sunday) by corresponding numbers 1,2,3,4,5,6,7, as seen in the screenshot below:
+
+- If user selects to book a dog walker with option 1, they then proceed to indicate what day of the week (Monday - Sunday) they would like with corresponding numbers 1,2,3,4,5,6,7, as seen in the screenshot below:
 
 ![image](https://user-images.githubusercontent.com/68662449/163658983-04f5e6fc-4f39-4816-b6a8-8307f5315b9d.png)
 
 
-On entering their selected day, users are presented with a list of available walkers for their selected day, as shown below:
+- User is now presented with a list of available walkers for their selected day, as shown below:
+
 
 ![image](https://user-images.githubusercontent.com/68662449/163659111-ed26082a-f773-4d40-afbe-34eee0290116.png)
 
 
-Once they enter which dog walker they would like on the day, they receive a confirmation wihtin seconds, together with an update of their calendar showing their confirmed bookings and outstanding availability. See screenshot demonstrating these below:
+
+Once they enter which dog walker they would like on a selected day, they receive a confirmation wihtin seconds, together with an update of their calendar showing their confirmed bookings and outstanding availability. See screenshot below:
+
 
 ![image](https://user-images.githubusercontent.com/68662449/163659220-b9fb1996-3213-4f80-bbd8-7b068a558e21.png)
 
 
-In the above screenshot, it shows that after the update, users are presented again with two new options. Option 1 is to find a dog walker again and option 2 is to quit the app.
-If the users select to quit the app at this point, they receive a 'Thank you and goodbye' message, as shown in the screenshot below:
+
+In the above screenshot, it shows that after the update, the user is again presented with two new options. Option 1 is to find a dog walker for another day and option 2 is to quit the app.
+If the user selects to quit the app at this point, they receive a 'Thank you and goodbye' message, as shown in the screenshot below:
 
 
 ![image](https://user-images.githubusercontent.com/68662449/163659338-ace80f5b-8321-48d3-ad25-370c7fe4b4d7.png)
@@ -76,7 +84,7 @@ If the users select to quit the app at this point, they receive a 'Thank you and
 - Display app name and short description
 - Display questions asking if user wants to log-in or create a new account.
 
-* Log in (collect and verify email)
+* Registered User Log in (collect and verify email)
 
 ![image](https://user-images.githubusercontent.com/68662449/163660233-f5945ec0-8118-46e6-bd6f-01570869be09.png)
 
@@ -98,7 +106,7 @@ If the users select to quit the app at this point, they receive a 'Thank you and
 
 ![image](https://user-images.githubusercontent.com/68662449/163660529-dab4b5ce-f558-4581-a722-2cf299dc605b.png)
 
-- Users to indicate by selecting each day of the week they are available by was of numbers for each day of the week:
+- Allow user to indicate each day of the week they are available by use of numbers for each day of the week:
 
 ![image](https://user-images.githubusercontent.com/68662449/163660593-be786953-dd6b-4ff3-93a8-22bbf1e512e9.png)
 
@@ -112,11 +120,11 @@ If the users select to quit the app at this point, they receive a 'Thank you and
 
 ![image](https://user-images.githubusercontent.com/68662449/163660765-88441522-891e-4ad2-934e-bcfe870cdd58.png)
 
-* User presented with a list of days to choose from in the week, and then a list of people available to walk their dog on the selected day:
+* Show user a list of days to choose from in the week, and then a list of people available to walk their dog on a selected day:
 
 ![image](https://user-images.githubusercontent.com/68662449/163660907-03be46e4-4696-4b60-8b43-d3a25303290a.png)
 
-* User receives confirmation of all their selected bookings and the remainder availability they still have for the week:
+* Display confirmation of a selected booking and the remainder availability for the week:
 
 ![image](https://user-images.githubusercontent.com/68662449/163661161-fe5163d8-4d70-4e9b-94e9-4155eaace256.png)
 
@@ -125,10 +133,10 @@ If the users select to quit the app at this point, they receive a 'Thank you and
 ![image](https://user-images.githubusercontent.com/68662449/163661205-8aa3207e-617c-4cd4-b042-c11942376a77.png)
 
 - QUIT option 2 presented to user after confirmation of their bookings and calendar update.
-- Selecting the Quit option returns the message 'Thank you for using dogs-in-the-hood. Goodbye!'.
+- Show the message 'Thank you for using dogs-in-the-hood. Goodbye!' when user select 2 to Quit.
 
 * SPECIAL FEATURE
-- With mentor Malia's guidance, found code with special feature to prevent the app accepting double bookings!
+- With my mentor Malia's guidance, found a way to code special feature to prevent the app from accepting double bookings.
 
 ![image](https://user-images.githubusercontent.com/68662449/163661635-5e75619d-cd6d-43b9-9464-6641fd1c1f43.png)
 
@@ -150,7 +158,8 @@ I made an original project plan as seen in this flow chart, but it turned out to
 ## Google Sheet
 ![image](https://user-images.githubusercontent.com/68662449/163656457-6bc38e8d-fabd-457a-aab8-7677b4ea05fa.png)
 
-When a user is registered their information is automatically enetred here etc
+- When a user is registered their information is automatically entered on the spreadsheet.
+- Website owner manually enters 'Available' for every day of the week before bookings begins.
 
 
 ## Libraries Used
