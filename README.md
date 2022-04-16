@@ -23,7 +23,7 @@ The first thing you need to do when using this app is choosing if you want to lo
 
 
 ### Future Features
-
+- **Manage Availability** was dropped from this project as I didn't have time to work out the logic.  If given more time, manage availability would have been a 2nd option on the main menu and quit would be 3rd. Users would be able to set the days they were available to walk dogs. So that the spreadsheet owner would not have to manage that functionality.
 
 ## Design Documents
 
@@ -33,6 +33,7 @@ Flow chart
 
 ## Google Sheet
 ![image](https://user-images.githubusercontent.com/68662449/163656457-6bc38e8d-fabd-457a-aab8-7677b4ea05fa.png)
+
 When a user is registered their information is automatically enetred here etc
 
 
