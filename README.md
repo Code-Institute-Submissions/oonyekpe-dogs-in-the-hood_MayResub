@@ -1,7 +1,8 @@
 # Dogs-in-the-hood
 
 ![image](https://user-images.githubusercontent.com/68662449/163656132-b9347d81-103d-4c75-a8a1-5749e4b7ee7d.png)
-Dogs-in-the-hood website is an app to connect dog walkers and dog owners in the neighbourhood, so that people can coordinate dog walking.
+
+Dogs-in-the-hood is an online app to connect dog owners and dog walkers in the same neighbourhood. It is for people in the community to easily find and coordinate to meet dog walking demandss. The app contains a function that welcomes users to either log-in or create a new account to use the app. The app is supported by a Google sheet behind the scence, that is populated with the information entered by users when they register and use the app.
 
 Deployed url: https://dogs-in-the-hood.herokuapp.com/
 
@@ -10,10 +11,55 @@ Deployed url: https://dogs-in-the-hood.herokuapp.com/
 Obiageli Onyekpe
 
 
-
 ## How to Use
 
-The first thing you need to do when using this app is choosing if you want to log in or create a new account.
+To start, users are presented with a short introduction and can either log-in as already signed-up users or they can create a new account. For ease, users are requested to type in  1 (then the ENTER key) or 2 ( then the ENTER key) to make their selection.
+
+To log-in, users are requested to type in their email address.
+To create an account, users are requested to type in their first and last names, their email address, and a password. The screenshots demonstrating these steps on the app site are shown below:
+
+![image](https://user-images.githubusercontent.com/68662449/163658072-34d5281f-cfd0-4b2f-b975-143ae7001ab4.png)
+
+
+
+
+![image](https://user-images.githubusercontent.com/68662449/163658238-0d4f17c1-b070-487b-bebe-c05c4db54436.png)
+
+
+![image](https://user-images.githubusercontent.com/68662449/163658442-9211f3d6-cb1a-4e70-94b6-bc7b3859f372.png)
+
+
+Once a new account is successfully created, the user is presented with clear instructions to input their availability for the week, as evidenced in the screenshot below: 
+
+![image](https://user-images.githubusercontent.com/68662449/163658663-edf27c41-8527-450d-a27b-542cbbbd7bc0.png)
+
+
+Next step, the new user is presented with the option 1 - Select a dog walker or option 2 - Quit the app:
+
+![image](https://user-images.githubusercontent.com/68662449/163658789-5115418d-ed04-401e-a27d-9ef36b3b08fc.png)
+
+If the user selects option 1, they are then presented with the option to indicate what day of the week (Monday - Sunday) by corresponding numbers 1,2,3,4,5,6,7, as seen in the screenshot below:
+
+![image](https://user-images.githubusercontent.com/68662449/163658983-04f5e6fc-4f39-4816-b6a8-8307f5315b9d.png)
+
+
+On entering the day they would like, users will be presented with a list of available walkers for their selected day, as shown below:
+
+![image](https://user-images.githubusercontent.com/68662449/163659111-ed26082a-f773-4d40-afbe-34eee0290116.png)
+
+
+Once they enter which dog walker they would like on the day, they receive a confirmation wihtin seconds, together with an update of their calendar showing their confirmed bookings and outstanding availability. See screenshot demonstrating these below:
+
+![image](https://user-images.githubusercontent.com/68662449/163659220-b9fb1996-3213-4f80-bbd8-7b068a558e21.png)
+
+
+In the above screenshot, it shows that after the update, users are presented again with two new options. Option 1 is to find a dog walker again and option 2 is to quit the app.
+If the users select to quit the app at this point, they receive a 'Thank you and goodbye' message, as shown in the screenshot below:
+
+
+![image](https://user-images.githubusercontent.com/68662449/163659338-ace80f5b-8321-48d3-ad25-370c7fe4b4d7.png)
+
+
 
 
 
