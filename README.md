@@ -1,4 +1,4 @@
-# Dogs-in-the-hood
+# Project 3 Python Essentials: Dogs-in-the-hood
 
 ![image](https://user-images.githubusercontent.com/68662449/163656132-b9347d81-103d-4c75-a8a1-5749e4b7ee7d.png)
 
@@ -31,7 +31,8 @@ To create an account, users are requested to type in their first and last names,
 
 Once a new account is successfully created, the user is presented with clear instructions to input their availability for the week, as evidenced in the screenshot below: 
 
-![image](https://user-images.githubusercontent.com/68662449/163658663-edf27c41-8527-450d-a27b-542cbbbd7bc0.png)
+![image](https://user-images.githubusercontent.com/68662449/163662410-db485e94-38ae-4d56-97c8-7bfdcfc40e3e.png)
+
 
 
 Next step, the new user is presented with the option 1 - Select a dog walker or option 2 - Quit the app:
