@@ -55,7 +55,7 @@ Once a new account is successfully created, the user is presented with clear ins
 
 
 
-Once they enter which dog walker they would like on a selected day, they receive a confirmation wihtin seconds, together with an update of their calendar showing their confirmed bookings and outstanding availability. See screenshot below:
+Once they enter which dog walker they would like on a selected day, they receive a confirmation within seconds, together with an update of their calendar showing their confirmed bookings and outstanding availability. Please see screenshot below:
 
 
 ![image](https://user-images.githubusercontent.com/68662449/163659220-b9fb1996-3213-4f80-bbd8-7b068a558e21.png)
@@ -251,7 +251,14 @@ When I proceed to enter the valid number 2, the app works and generates the next
 
 ![image](https://user-images.githubusercontent.com/68662449/163665527-b2e2fcd6-3ca0-48d4-8ee3-29588df9ee54.png)
 
-3. Testing revealed coding issues for generating the list of people available to walk dogs on a selected day. The programme is coded to know when the user selects an option that is not on the list, by entering a number greater than the listed number of options. Please see the screenshot below:
+3. Tested to confirm users cannot create the same email more than once:
+
+When a user enters an email that already exists on the app, it's picked up and a message is generated that states "sorry this email is already in use. Can we try again?" Please see the screenshot showing this occurence below:
+
+![image](https://user-images.githubusercontent.com/68662449/163666896-9c1e6bfc-e100-4ad5-bdea-3005b08711e7.png)
+
+
+4. Testing revealed coding issues for generating the list of people available to walk dogs on a selected day. The programme is coded to know when the user selects an option that is not on the list, by entering a number greater than the listed number of options. Please see the screenshot below:
 
 ![image](https://user-images.githubusercontent.com/68662449/163666081-4a3e967f-b14d-4d4c-b8de-4134887f2633.png)
 
@@ -264,7 +271,9 @@ When the user enters the number 22, which is greater that the number of options,
 
 ### Bugs
 
-* Fixed issues with bookings; double bookings; highlight the bugs and struggles (3-5 examples)
+* Encountered and fixed coding issues in gitpod to order and present the calendar for the bookings in a tidy manner.
+* Used  # noqa to override errors in gitpod that critical sentences were too long
+* Overcame error messages that lines were too long in the code by adjusting sentences to next lines
 
 ### Unifxed Bugs
 
@@ -325,4 +334,4 @@ This application will be deployed via [Heroku](https://heroku.com)
     - Used deployment section for the read.me
     - Used for libraries included section.
 
-* Malia Havlicek: Reviewing and giving suggestions how to improve my project.
+* Malia Havlicek: Reviewing and giving suggestions on how to improve my project.
