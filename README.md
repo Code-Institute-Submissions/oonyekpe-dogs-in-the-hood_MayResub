@@ -81,8 +81,9 @@ If the user selects to quit the app at this point, they receive a 'Thank you and
 
 ![image](https://user-images.githubusercontent.com/68662449/163659948-c1cbf993-f049-485f-a0e5-81d90541658b.png)
 
-- Display app name and short description
-- Display questions asking if user wants to log-in or create a new account.
+- Display app name and short description.
+- Display question asking if user wants to log-in or create a new account.
+
 
 * Registered User Log in (collect and verify email)
 
@@ -92,19 +93,22 @@ If the user selects to quit the app at this point, they receive a 'Thank you and
 - Collect user's email address
 - Validate user's email address
 
+
 * Create an account
 
 ![image](https://user-images.githubusercontent.com/68662449/163660315-41e54a98-02e0-4247-b785-3954f4b9fecc.png)
 
-- Request for user's first and last names
-- Request for user's email address and validate the email address
-- Check if email is not already in use
-- Request user to enter password
-- New data automated to input into linked Google sheet
+- Request for user's first and last names.
+- Request for user's email address and validate the email address.
+- Check if email is not already in use.
+- Request user to enter password.
+- New data automated to input into linked Google sheet.
 
-* Collect user's avaliability and display in week's calendar
+
+* Collect user's avaliability and display in calendar
 
 ![image](https://user-images.githubusercontent.com/68662449/163660529-dab4b5ce-f558-4581-a722-2cf299dc605b.png)
+
 
 - Allow user to indicate each day of the week they are available by use of numbers for each day of the week:
 
@@ -120,20 +124,25 @@ If the user selects to quit the app at this point, they receive a 'Thank you and
 
 ![image](https://user-images.githubusercontent.com/68662449/163660765-88441522-891e-4ad2-934e-bcfe870cdd58.png)
 
-* Show user a list of days to choose from in the week, and then a list of people available to walk their dog on a selected day:
+
+* Show user a list of days in the week to choose from, and then a list of people available to walk their dog on a selected day:
 
 ![image](https://user-images.githubusercontent.com/68662449/163660907-03be46e4-4696-4b60-8b43-d3a25303290a.png)
+
 
 * Display confirmation of a selected booking and the remainder availability for the week:
 
 ![image](https://user-images.githubusercontent.com/68662449/163661161-fe5163d8-4d70-4e9b-94e9-4155eaace256.png)
 
-* QUIT app
+
+* QUIT option
 
 ![image](https://user-images.githubusercontent.com/68662449/163661205-8aa3207e-617c-4cd4-b042-c11942376a77.png)
 
-- QUIT option 2 presented to user after confirmation of their bookings and calendar update.
-- Show the message 'Thank you for using dogs-in-the-hood. Goodbye!' when user select 2 to Quit.
+
+- Option 2 - Quit presented to user after confirmation of their bookings and calendar update.
+- Shows the message 'Thank you for using dogs-in-the-hood. Goodbye!' when user selects option 2 to Quit.
+
 
 * SPECIAL FEATURE
 - With my mentor Malia's guidance, found a way to code special feature to prevent the app from accepting double bookings.
@@ -221,12 +230,41 @@ I made an original project plan as seen in this flow chart, but it turned out to
 
 
 ### Manual Testing
+* On the main menu, I manually the following on the app:
+
+1. On the main menu, what happens when an invalid email address is entered? See the screenshot of the result below:
+
+![image](https://user-images.githubusercontent.com/68662449/163665076-3250c3a3-4ef0-4f12-a8a2-cce77591ca6a.png)
+
+An error message is returned to the user, with a request to try entering the email address again.
+When a valid email format is entered with the next attempt, the programme recognises and the correct format and runs as it should:
+
+![image](https://user-images.githubusercontent.com/68662449/163665235-85dc47cc-154a-410a-b2a9-27824d7c46ac.png)
+
+
+2. To book a dog walk, what happens if I enter a number outside the numbers 1-7 corresponding to days of the week as instructed on the app, for example if I enter the number 8?:
+
+![image](https://user-images.githubusercontent.com/68662449/163665427-d8a35f2e-1a73-42af-891c-009810bca7c5.png)
+
+An error message occurs with the statement "Please choose one of the option" and lists the options 1-7 again.
+When I proceed to enter the valid number 2, the app works and generates the next stage, see the screenshot below:
+
+![image](https://user-images.githubusercontent.com/68662449/163665527-b2e2fcd6-3ca0-48d4-8ee3-29588df9ee54.png)
+
+3. Testing revealed coding issues for generating the list of people available to walk dogs on a selected day. The programme is coded to know when the user selects an option that is not on the list, by entering a number greater than the listed number of options. Please see the screenshot below:
+
+![image](https://user-images.githubusercontent.com/68662449/163666081-4a3e967f-b14d-4d4c-b8de-4134887f2633.png)
+
+In the image above, the programme presents the user with a list of avialable dog walkers for Tuesday, all ranging from numbers 1-20 inclusive.
+When the user enters the number 22, which is greater that the number of options, an error message occurs producing the only valid numbers in single quote marks ' ', and request that the userselects from the listed options. Please see in the screenshote below:
+
+![image](https://user-images.githubusercontent.com/68662449/163666256-f9be5b36-69a0-4364-8d7a-f6e936723d5a.png)
 
 
 
 ### Bugs
 
-* issues with bookings - fixed; double bookings; highlight the bugs and struggles (3-5 examples)
+* Fixed issues with bookings; double bookings; highlight the bugs and struggles (3-5 examples)
 
 ### Unifxed Bugs
 
