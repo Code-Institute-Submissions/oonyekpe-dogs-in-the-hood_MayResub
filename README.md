@@ -27,9 +27,13 @@ The first thing you need to do when using this app is choosing if you want to lo
 
 ## Design Documents
 
-
+Flow chart
 
 ## Data Model
+
+## Google Sheet
+![image](https://user-images.githubusercontent.com/68662449/163656457-6bc38e8d-fabd-457a-aab8-7677b4ea05fa.png)
+When a user is registered their information is automatically enetred here etc
 
 
 ## Libraries Used
