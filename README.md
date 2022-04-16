@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/68662449/163656132-b9347d81-103d-4c75-a8a1-5749e4b7ee7d.png)
 
-Dogs-in-the-hood is an online app to connect dog owners and dog walkers in the same neighbourhood. It is for people in the community to easily find and coordinate to meet dog walking demandss. The app contains a function that welcomes users to either log-in or create a new account to use the app. The app is supported by a Google sheet behind the scence, that is populated with the information entered by users when they register and use the app.
+Dogs-in-the-hood is an online app to connect dog owners and dog walkers in the same neighbourhood. It is for people in the community to easily find and coordinate to meet dog walking demands. The app contains a function that allows users to either log-in or create a new account to use the app. The app is supported by a Google sheet behind the scence, that is populated with the information entered by users when they register and use the app.
 
 Deployed url: https://dogs-in-the-hood.herokuapp.com/
 
@@ -43,7 +43,7 @@ If the user selects option 1, they are then presented with the option to indicat
 ![image](https://user-images.githubusercontent.com/68662449/163658983-04f5e6fc-4f39-4816-b6a8-8307f5315b9d.png)
 
 
-On entering the day they would like, users will be presented with a list of available walkers for their selected day, as shown below:
+On entering their selected day, users are presented with a list of available walkers for their selected day, as shown below:
 
 ![image](https://user-images.githubusercontent.com/68662449/163659111-ed26082a-f773-4d40-afbe-34eee0290116.png)
 
@@ -66,6 +66,72 @@ If the users select to quit the app at this point, they receive a 'Thank you and
 ## Features
 
 ### Implemented Features
+
+#### User
+* Log in and create an account
+
+![image](https://user-images.githubusercontent.com/68662449/163659948-c1cbf993-f049-485f-a0e5-81d90541658b.png)
+
+- Display app name and short description
+- Display questions asking if user wants to log-in or create a new account.
+
+* Log in (collect and verify email)
+
+![image](https://user-images.githubusercontent.com/68662449/163660233-f5945ec0-8118-46e6-bd6f-01570869be09.png)
+
+- Good to have you back message
+- Collect user's email address
+- Validate user's email address
+
+* Create an account
+
+![image](https://user-images.githubusercontent.com/68662449/163660315-41e54a98-02e0-4247-b785-3954f4b9fecc.png)
+
+- Request for user's first and last names
+- Request for user's email address and validate the email address
+- Check if email is not already in use
+- Request user to enter password
+- New data automated to input into linked Google sheet
+
+* Collect user's avaliability and display in week's calendar
+
+![image](https://user-images.githubusercontent.com/68662449/163660529-dab4b5ce-f558-4581-a722-2cf299dc605b.png)
+
+- Users to indicate by selecting each day of the week they are available by was of numbers for each day of the week:
+
+![image](https://user-images.githubusercontent.com/68662449/163660593-be786953-dd6b-4ff3-93a8-22bbf1e512e9.png)
+
+
+- User receives personalised message showing their availability for the week:
+
+![image](https://user-images.githubusercontent.com/68662449/163660664-7fa6e3ee-1770-4f8f-b71d-26938d7072ef.png)
+
+
+* Offer user option to book a dog walk for their pet, or quit the app:
+
+![image](https://user-images.githubusercontent.com/68662449/163660765-88441522-891e-4ad2-934e-bcfe870cdd58.png)
+
+* User presented with a list of days to choose from in the week, and then a list of people available to walk their dog on the selected day:
+
+![image](https://user-images.githubusercontent.com/68662449/163660907-03be46e4-4696-4b60-8b43-d3a25303290a.png)
+
+* User receives confirmation of all their selected bookings and the remainder availability they still have for the week:
+
+![image](https://user-images.githubusercontent.com/68662449/163661161-fe5163d8-4d70-4e9b-94e9-4155eaace256.png)
+
+* QUIT app
+
+![image](https://user-images.githubusercontent.com/68662449/163661205-8aa3207e-617c-4cd4-b042-c11942376a77.png)
+
+- QUIT option 2 presented to user after confirmation of their bookings and calendar update.
+- Selecting the Quit option returns the message 'Thank you for using dogs-in-the-hood. Goodbye!'.
+
+* SPECIAL FEATURE
+- With mentor Malia's guidance, found code with special feature to prevent the app accepting double bookings!
+
+![image](https://user-images.githubusercontent.com/68662449/163661635-5e75619d-cd6d-43b9-9464-6641fd1c1f43.png)
+
+- For example, in the above screenshot, user Emma was unable to book a dog walk for Monday as she was already booked. The message: " You will have to email Joe Jonas to cancel" was returned with an update of Emma's calendar for the week.
 
 
 ### Future Features
