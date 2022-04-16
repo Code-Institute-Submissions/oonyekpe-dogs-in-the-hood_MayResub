@@ -1,6 +1,9 @@
 # Dogs-in-the-hood
 
+![image](https://user-images.githubusercontent.com/68662449/163656132-b9347d81-103d-4c75-a8a1-5749e4b7ee7d.png)
+Dogs-in-the-hood website is an app to connect dog walkers and dog owners in the neighbourhood, so that people can coordinate dog walking.
 
+Deployed url: https://dogs-in-the-hood.herokuapp.com/
 
 ## Author
 
@@ -152,5 +155,6 @@ This application will be deployed via [Heroku](https://heroku.com)
 * Coder's Bistro programme by Arthur Henrique El Mezaonik Martins
 
     - Used deployment section for the read.me
+    - Used for libraries included section.
 
 * Malia Havlicek: Reviewing and giving suggestions how to improve my project.
