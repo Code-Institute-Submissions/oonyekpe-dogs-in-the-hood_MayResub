@@ -254,7 +254,7 @@ def collect_availability():
 
     user_availability = []
 
-    print("Please 1 for each day you are available and 2 for the day's you are not, separated with by a comma")  # noqa
+    print("Please select 1 for each day you are available and 2 for the days you are not, separated with by a comma")  # noqa
     print("1 - Available")
     print("2 - Unavailable")
     print("For example: if you are available on Monday, Friday and Saturday, enter 1,2,2,2,1,1,2")  # noqa
