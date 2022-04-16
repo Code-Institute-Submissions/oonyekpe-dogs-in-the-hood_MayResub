@@ -1,31 +1,156 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Dogs-in-the-hood
 
-Welcome oonyekpe,
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
 
-## Reminders
+## Author
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+Obiageli Onyekpe
 
-## Creating the Heroku app
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## How to Use
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+The first thing you need to do when using this app is choosing if you want to log in or create a new account.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
 
-Connect your GitHub repository and deploy as normal.
 
-## Constraints
+## Features
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+### Implemented Features
 
------
-Happy coding!
+
+### Future Features
+
+
+## Design Documents
+
+
+
+## Data Model
+
+
+## Libraries Used
+
+* cachetools
+
+    - Extensible memoizing collections and decorators
+
+* dnspython
+
+    - It is a DNS toolkit for Python. It supports almost all record types. It can be used for queries, zone transfers, and dynamic updates. It supports TSIG authenticated messages and EDNS0.
+
+* email-validator
+
+    - This library validates that a string is of the form name@example.com.
+
+* google-auth
+
+     - This library simplifies using Google’s various server-to-server authentication mechanisms to access Google APIs.
+
+* google-auth-oauthlib
+
+    - This library provides oauthlib integration with google-auth.
+
+* gspread
+
+     - Interface for working with Google Sheets.
+
+* oauthlib
+
+    - A generic, spec-compliant, thorough implementation of the OAuth request-signing logic for Python 3.6+.
+
+* pyasn1
+
+    - Pure-Python implementation of ASN.1 types and DER/BER/CER codecs (X.208)
+
+* pyasn1-modules
+
+    - A collection of ASN.1 modules expressed in form of pyasn1 classes. Includes protocols PDUs definition (SNMP, LDAP etc.) and various data structures (X.509, PKCS etc.).
+
+* requests-oauthlib
+
+    - Provides first-class OAuth library support for Requests.
+
+* rsa
+
+    - It supports encryption and decryption, signing and verifying signatures, and key generation according to PKCS#1 version 1.5.
+
+
+## Testing
+
+### Validation Testing
+
+* PEP 8
+        
+    - I used `# noqa` to avoid flake8 errors around lines too long where I couldn't rearrange the code to make it work. 
+    - I also had to remove some extra spaces and the unused datetime import.
+    ![PEP8 all ok](https://user-images.githubusercontent.com/68662449/163655398-b5dee422-e198-4021-8c4d-e82b5dd8bdf3.PNG)
+
+
+### Manual Testing
+
+
+
+### Bugs
+
+* issues with bookings - fixed; double bookings; highlight the bugs and struggles (3-5 examples)
+
+### Unifxed Bugs
+
+* No bugs remaining
+
+## Deployment
+
+This application will be deployed via [Heroku](https://heroku.com)
+
+1. Log into Heroku.
+
+2. Navigate to Dashboard. 
+
+3. Click "New" and select "create new app" from the drop-down menu. This is found in the upper right portion of the window. Provide a name for your application, this needs to be unique, and select your region.
+
+![Heroku step1](https://user-images.githubusercontent.com/68662449/163655564-83cb284c-310c-41c7-a13d-fe0f77bd14ad.PNG)
+
+4. Click "Create App".
+
+5.	Navigate to "Settings" and scroll down to "config vars".
+6. Click "Reveal Config Var", in the field key I entered the CREDS word and in the value field I copied my creds.json content as past there.
+
+![Heroku step2-config vars](https://user-images.githubusercontent.com/68662449/163655613-9aa8edaf-b1fe-43ed-a771-0a373ba4c3ad.PNG)
+
+7. Then scroll down to "build packs", click "build packs" and then click both "python" and "node.js"(node.js is needed for the mock terminal.)
+![Heroku step3 - buildpacks](https://user-images.githubusercontent.com/68662449/163655690-10a1a530-46ef-4d8d-a097-f27ba6cecfae.PNG)
+
+8. Navigate to the "Deploy" section.
+
+9. Scroll down to "Deployment Method" and select "GitHub".
+![Heroku step4 - connect to github](https://user-images.githubusercontent.com/68662449/163655804-a9fb7b7c-ab21-4aaa-8b4d-e590f716b644.PNG)
+
+
+10. Authorise the connection of Heroku to GitHub.
+
+11. Search for your GitHub repository name, and select the correct repository.
+
+12. For Deployment there are two options, Automatic Deployments or Manual, I chose Automatic Deployment so Heroku will re-build each time code is pushed to GitHub.
+
+13. Ensure the correct branch is selected "master/Main", and select the deployment method that you desire.
+![Heroku step5 - automatic deployment to github](https://user-images.githubusercontent.com/68662449/163655875-bf2e764b-15a5-41c1-a7a2-521184e5f8f6.PNG)
+
+
+## Credits
+
+### Acknowledgments
+
+* Code Institute: Love Sandwiches Project
+    
+    - Deployment terminal
+
+    - Function update_worksheet
+
+    - Steps to declare and connect the API to my worksheet
+
+* Coder's Bistro programme by Arthur Henrique El Mezaonik Martins
+
+    - Used deployment section for the read.me
+
+* Malia Havlicek: Reviewing and giving suggestions how to improve my project.
