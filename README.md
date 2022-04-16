@@ -27,7 +27,10 @@ The first thing you need to do when using this app is choosing if you want to lo
 
 ## Design Documents
 
-Flow chart
+I made an original project plan as seen in this flow chart, but it turned out to be really complicated and needed far more time than I had, so I scaled back and adjusted to scale as I coded.
+
+![image](https://user-images.githubusercontent.com/68662449/163657194-a1d0eb32-8101-403b-8415-2ae40541a612.png)
+
 
 ## Data Model
 
