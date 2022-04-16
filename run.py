@@ -1,7 +1,10 @@
+"""
+This programmme interact with users through a python
+terminal to coordinate dog walks in a neighbourhood.
+"""
 import gspread
 from google.oauth2.service_account import Credentials
 from email_validator import validate_email, EmailNotValidError
-from datetime import date, datetime
 from time import sleep
 
 SCOPE = [
@@ -149,6 +152,7 @@ def log_in():
         if registered_user:
             info = user_info(user_email)
             user = create_user(info)
+            print(f'Welcome {user.user_full_name()} you are registered!')
             user_function(user)
             break
 
@@ -197,6 +201,7 @@ def create_account():
     new_user = register_user()
     new_user_availabilty = collect_availability()
     update_availability(new_user.email, new_user_availabilty)
+    print(f'Welcome {new_user.user_full_name()} you are logged-in!')
     user_function(new_user)
 
 
@@ -341,28 +346,38 @@ def user_function(user):
     """
     Code used for registered users
     """
-    print(f'Welcome {user.user_full_name()}!')
+
     email = user.email
     return_calendar(user)
     user_menu_selection = user_menu()
 
     if user_menu_selection == '1':
         day_to_book = collect_day()
-        chosen_walker = request_walker(day_to_book)
-        book_walker(email, chosen_walker, day_to_book)
+        # see if user already has a booking
+        owner_info = find_row(email, SHEET.worksheet("dogs_in_the_hood"))
+        cell = SHEET.worksheet("dogs_in_the_hood").cell(
+            owner_info, int(day_to_book)+4)
+        if cell.value != "Available":
+            booked_walker = cell.value.replace("booked for walk", "").strip()
+            print(
+                f"You already have a booking. You will have to email {booked_walker} to cancel")  # noqa
+        else:
+            chosen_walker = request_walker(day_to_book)
+            book_walker(email, chosen_walker, day_to_book)
+        user_function(user)
     elif user_menu_selection == '2':
-        update_availability()
+        print("Thank you for using dogs-in-the-hood. Goodbye!")
 
 
 def user_menu():
     """
     Display the user's menu options:
     1 - Request a walker for your dog
-    2 - Update availability to walk another user's dog
+    2 - Quit
     """
     print("Would you like to")
     print("1 - Find a walker for your dog")
-    print("2 - Register availability to walk other user's dogs")
+    print("2 - Quit")
     menu_option = input("Enter your answer here:\n").upper().strip()
 
     end_section()
@@ -382,8 +397,12 @@ def user_menu():
 def return_calendar(user):
     print("Here is your calendar this week:")
     end_section()
-    print(User.get_availability(user))
+    cal = User.get_availability(user)
+    for item in cal:
+        print("{}: {}".format(item, cal[item]))
+
     end_section()
+    sleep(2)
 
 
 def request_walker(day_to_book):
@@ -484,7 +503,8 @@ def book_walker(owner_email, walker, day):
 
     worksheet.update_cell(owner_info, int(
         day)+4, f"{walker[0]} {walker[1]} booked for walk")
-    worksheet.update_cell(walker_info, int(day)+4, f"Booked to walk dog")
+    worksheet.update_cell(walker_info, int(
+        day)+4, f"Booked to walk dog {owner_email}")
 
     print("Great, that's all booked for you. Here is your updated calendar:")
 
