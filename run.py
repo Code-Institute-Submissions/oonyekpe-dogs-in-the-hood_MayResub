@@ -254,12 +254,18 @@ def collect_availability():
 
     user_availability = []
 
-    print("Please select 1 for each day you are available and 2 for the days you are not, separated with by a comma")  # noqa
-    print("1 - Available")
-    print("2 - Unavailable")
-    print("For example: if you are available on Monday, Friday and Saturday, enter 1,2,2,2,1,1,2")  # noqa
-    user_input = input("Enter your answer here:\n").upper().strip()
-    user_availability = user_input.split(",")
+    days = ["Monday", "Tuesday", "Wednesday",
+            "Thursday", "Friday", "Saturday", "Sunday"]
+    for day in days:
+        user_input = ""
+        while user_input not in [1, 2, "1", "2"]:
+            print(f"Are you available on {day}?")
+            print("1 - Available")
+            print("2 - Unavailable")
+            user_input = input("Enter your answer here:\n").upper().strip()
+            if user_input not in [1, 2, "1", "2"]:
+                print("invalid entry, please try again")
+        user_availability.append(user_input)
 
     return user_availability
 
