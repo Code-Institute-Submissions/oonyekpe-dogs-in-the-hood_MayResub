@@ -267,7 +267,7 @@ def collect_availability():
             user_input = input("Enter your answer here:\n").upper().strip()
             if user_input not in [1, 2, "1", "2"]:
                 print("invalid entry, please try again")
-                break
+                exit()
         user_availability.append(user_input)
 
     return user_availability
