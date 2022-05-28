@@ -84,6 +84,8 @@ class User:
         worksheet = SHEET.worksheet('dogs_in_the_hood')
         user_email = self.email
         row = find_row(user_email, worksheet)
+        print(row)
+        exit()
         user_info = worksheet.row_values(row)
 
         availability = {
