@@ -271,7 +271,8 @@ def collect_availability():
             else:
                 user_availability.append(user_input)
 
-                return user_availability
+                return user_availability 
+    return False               
 
 
 def is_user(email):
