@@ -84,8 +84,7 @@ class User:
         worksheet = SHEET.worksheet('dogs_in_the_hood')
         user_email = self.email
         row = find_row(user_email, worksheet)
-        print(row)
-        exit()
+
         user_info = worksheet.row_values(row)
 
         availability = {
@@ -98,7 +97,15 @@ class User:
             'Sunday': user_info[10],
         }
 
-        return availability
+        # return availabilitys
+
+        if availability['Monday'] == "":
+            return False
+        else:
+            return availability
+
+        return False
+
 
 # Welcome function
 
@@ -271,8 +278,8 @@ def collect_availability():
             else:
                 user_availability.append(user_input)
 
-                return user_availability 
-    return False               
+                return user_availability
+    return False
 
 
 def is_user(email):
