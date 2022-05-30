@@ -4,7 +4,7 @@
 
 Dogs-in-the-hood is an online app to connect dog owners and dog walkers in the same neighbourhood. It is for people in the community to easily find and coordinate to meet dog walking demands. The app contains a function that allows users to either log-in or create a new account to use the app. The app is supported by a Google sheet behind the scence, that is populated with the information entered by users when they register and use the app.
 
-Deployed url: https://dogs-in-the-hood.herokuapp.com/
+Deployed url: https://dogs-in-the-hood2.herokuapp.com/
 
 ## Author
 
