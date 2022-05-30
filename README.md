@@ -51,6 +51,11 @@ Once a new account is successfully created, the user is presented with clear ins
 ![image](https://user-images.githubusercontent.com/68662449/163658983-04f5e6fc-4f39-4816-b6a8-8307f5315b9d.png)
 
 
+Note: user can only select one day at a time. If user enters more than one number, for example if user enters every day of the week as 1,1,1,1,1,1,2 the app returns with 'Please choose one of the options' as shown in image below:
+
+![Invalid return for more than one day select](https://user-images.githubusercontent.com/68662449/170925932-a4c4b663-d1eb-4839-82df-0c13072f5d38.PNG)
+
+
 - User is now presented with a list of available walkers for their selected day, as shown below:
 
 
