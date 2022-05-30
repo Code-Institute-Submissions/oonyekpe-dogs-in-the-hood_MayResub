@@ -33,6 +33,10 @@ Once a new account is successfully created, the user is presented with clear ins
 
 
 
+If the user enters an invalid response, for example if the user enters 'B' instead of '1' or '2', they receive a return message stating 'invalid entry, please try again', as show in the screenshot below:
+
+
+![Invalid selection for availabilty](https://user-images.githubusercontent.com/68662449/170928525-c80c049f-79e7-485c-9e9d-796ed9fbaad3.PNG)
 
 
 
