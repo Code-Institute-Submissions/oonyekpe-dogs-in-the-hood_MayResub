@@ -105,6 +105,7 @@ If the user selects to quit the app at this point, they receive a 'Thank you for
 - Good to have you back message
 - Collect user's email address
 - Validate user's email address
+- Invalid entry, please try again message. 
 
 
 * Create an account
@@ -243,7 +244,7 @@ I made an original project plan as seen in this flow chart, but it turned out to
 
 
 ### Manual Testing
-* On the main menu, I manually the following on the app:
+* On the main menu, I manually tested the following on the app:
 
 1. On the main menu, what happens when an invalid email address is entered? See the screenshot of the result below:
 
@@ -280,13 +281,17 @@ When the user enters the number 22, which is greater that the number of options,
 
 ![image](https://user-images.githubusercontent.com/68662449/163666256-f9be5b36-69a0-4364-8d7a-f6e936723d5a.png)
 
-
+My mentor and a friend also tested the app and their user feedback was positive.
 
 ### Bugs
 
 * Encountered and fixed coding issues in gitpod to order and present the calendar for the bookings in a tidy manner.
 * Used  # noqa to override errors in gitpod that critical sentences were too long
 * Overcame error messages that lines were too long in the code by adjusting sentences to next lines
+* Due to lack of time, as Heroku had unresolvable issues that had to be bypassed in the end, I could not spend more time on this part of the project in order to meet submission deadline.
+
+![Evidence of Heroku problem on web](https://user-images.githubusercontent.com/68662449/170930511-f2fd0a5f-84cd-4e4c-9dc7-dc2738bb4ff0.PNG)
+
 
 ### Unifxed Bugs
 
@@ -347,4 +352,4 @@ This application will be deployed via [Heroku](https://heroku.com)
     - Used deployment section for the read.me
     - Used for libraries included section.
 
-* Malia Havlicek: Reviewing and giving suggestions on how to improve my project.
+* Malia Havlicek: Reviewing and giving suggestions on how to improve my project. Assistance with re-submission.
