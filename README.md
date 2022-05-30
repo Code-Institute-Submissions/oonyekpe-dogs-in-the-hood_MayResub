@@ -22,18 +22,17 @@ To create an account, users are requested to type in their first and last names,
 
 
 
-
-![image](https://user-images.githubusercontent.com/68662449/163658238-0d4f17c1-b070-487b-bebe-c05c4db54436.png)
-
-
 ![image](https://user-images.githubusercontent.com/68662449/163658442-9211f3d6-cb1a-4e70-94b6-bc7b3859f372.png)
 
 
 
-Once a new account is successfully created, the user is presented with clear instructions to input their availability for the week, select 1 for available and 2 for unavailable, as shown in the screenshot below: 
+Once a new account is successfully created, the user is presented with clear instructions to input their availability for each day of the week, select 1 for available and 2 for unavailable, as shown in the screenshot below: 
 
 
-![image](https://user-images.githubusercontent.com/68662449/163662410-db485e94-38ae-4d56-97c8-7bfdcfc40e3e.png)
+![New user account creation](https://user-images.githubusercontent.com/68662449/170921671-b0504570-3ed4-48de-9fa0-0a21d5013d12.PNG)
+
+
+
 
 
 
