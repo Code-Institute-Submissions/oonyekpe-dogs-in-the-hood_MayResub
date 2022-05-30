@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/68662449/163656132-b9347d81-103d-4c75-a8a1-5749e4b7ee7d.png)
 
-Dogs-in-the-hood is an online app to connect dog owners and dog walkers in the same neighbourhood. It is for people in the community to easily find and coordinate to meet dog walking demands. The app contains a function that allows users to either log-in or create a new account to use the app. The app is supported by a Google sheet behind the scence, that is populated with the information entered by users when they register and use the app.
+Dogs-in-the-hood is an online app to connect dog owners and dog walkers in the same neighbourhood. It is for people in the community to easily find and coordinate to meet dog walking demands. The app contains a function that allows users to either log-in or create a new account to use the app. The app is supported by a Google sheet behind the scence, that is populated with the information entered by users when they register and use the app. The objective is to effectively and efficiently pool dog owners and dog walkers, linking them to meet their dog walking and time management needs within the neighbourhood.
 
 Deployed url: https://dogs-in-the-hood2.herokuapp.com/
 
@@ -71,7 +71,8 @@ Once they enter which dog walker they would like on a selected day, they receive
 
 
 In the above screenshot, it shows that after the update, the user is again presented with two new options. Option 1 is to find a dog walker for another day and option 2 is to quit the app.
-If the user selects to quit the app at this point, they receive a 'Thank you and goodbye' message, as shown in the screenshot below:
+If the user selects to quit the app at this point, they receive a 'Thank you for using dogd-in-the-hood. Goodbye' message, as shown in the screenshot below:
+
 
 
 ![image](https://user-images.githubusercontent.com/68662449/163659338-ace80f5b-8321-48d3-ad25-370c7fe4b4d7.png)
