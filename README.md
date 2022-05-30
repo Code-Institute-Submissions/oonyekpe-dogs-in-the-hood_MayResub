@@ -39,7 +39,11 @@ Once a new account is successfully created, the user is presented with clear ins
 - After submitting their availability for the week, the new user is presented with two options: 1 - Select a dog walker or 2 - Quit the app:
 
 
-![image](https://user-images.githubusercontent.com/68662449/163658789-5115418d-ed04-401e-a27d-9ef36b3b08fc.png)
+
+![New user registration availability](https://user-images.githubusercontent.com/68662449/170922820-05e1171c-1974-4e43-ab3f-6f3054edd1bd.PNG)
+
+
+
 
 
 - If user selects to book a dog walker with option 1, they then proceed to indicate what day of the week (Monday - Sunday) they would like with corresponding numbers 1,2,3,4,5,6,7, as seen in the screenshot below:
